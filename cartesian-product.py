@@ -2,7 +2,6 @@
 
 from argparse import ArgumentParser
 from itertools import product
-from collections import Counter
 
 def createArgumentParser():
 
