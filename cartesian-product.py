@@ -6,14 +6,24 @@ from itertools import product
 def createArgumentParser():
 
     parser = ArgumentParser()
-    parser.add_argument("list", type=list, nargs="+", help="List(s) to compute the cartesian product of")
-    parser.add_argument("-u", "--unique", action="store_true", help="Deduplicate lists so that they become sets of unique elements")
-    parser.add_argument("-U", "--Universally_unique", action="store_true", help="Deduplicate the resulting cartesian product so it becomes a set of unique elements")
+    parser.add_argument("list",
+                        type=list,
+                        nargs="+",
+                        help="List(s) to compute the cartesian product of")
+    parser.add_argument("-u",
+                        "--unique",
+                        action="store_true",
+                        help="Deduplicate lists so that they become sets of unique elements")
+    parser.add_argument("-U",
+                        "--Universally_unique",
+                        action="store_true",
+                        help="Deduplicate the resulting cartesian product so it becomes a set of unique elements that have no repeated values")
     return parser.parse_args()
 
 
 def cartesianProduct(unique, Universally_unique, arglist):
-
+    "Returns the cartesian product of provided lists"
+    
     cartesianProduct = product([])
 
     if unique:
@@ -37,7 +47,9 @@ def cartesianProduct(unique, Universally_unique, arglist):
 def main():
 
     args = createArgumentParser()
-    for element in cartesianProduct(args.unique, args.Universally_unique, args.list):
+    for element in cartesianProduct(args.unique,
+                                    args.Universally_unique,
+                                    args.list):
         print(element)
 
 
